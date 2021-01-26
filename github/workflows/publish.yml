@@ -6,7 +6,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: blumilk-php
+  IMAGE_NAME: php
 
 jobs:
   push:
