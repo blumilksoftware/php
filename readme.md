@@ -1,6 +1,9 @@
 # blumilksoftware/php
 PHP Docker image for internal @blumilksoftware development.
 
+## Versioning
+We are releasing images based on PHP image version numbering. For example `blumilksoftware/php:8.0.2.1` and `blumilksoftware/php:8.0.2.2` are both using `php:8.0.2-fpm-alpine`, but Composer version, installed extensions and other things can be different.
+
 ## Usage
 Just put service into your Dockerfile:
 ```yaml
@@ -58,3 +61,6 @@ RUN if [ ${XDEBUG_INSTALL} = true ]; then \
     && echo "xdebug.log_level=${XDEBUG_LOG_LEVEL}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 ;fi
 ```
+
+## Notes
+Please remember to add `.composer` directory of your project to `.gitignore` list. This directory is used to Composer cache actions and it should not be pushed to any repository.
