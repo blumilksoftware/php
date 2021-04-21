@@ -5,7 +5,7 @@ PHP Docker image for internal @blumilksoftware development.
 We are releasing images based on PHP image version numbering. For example `blumilksoftware/php:8.0.2.1` and `blumilksoftware/php:8.0.2.2` are both using `php:8.0.2-fpm-alpine`, but Composer version, installed extensions and other things can be different.
 
 ## Usage
-Just put service into your Dockerfile:
+Just put service into your `docker-compose.yml`:
 ```yaml
   php:
     image: ghcr.io/blumilksoftware/php:$VERSION
@@ -18,7 +18,7 @@ Just put service into your Dockerfile:
 ```
 
 ### Extended usage
-If you want, you can extend provided configuration as:
+If you want, you can extend the provided configuration as follows:
 ```yaml
   php:
     build:
