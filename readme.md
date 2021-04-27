@@ -1,5 +1,5 @@
 # blumilksoftware/php
-PHP Docker image for internal @blumilksoftware development.
+PHP Docker image for internal **[@blumilksoftware](https://github.com/blumilksoftware)** development.
 
 ## Versioning
 We are releasing images based on PHP image version numbering. For example `blumilksoftware/php:8.0.2.1` and `blumilksoftware/php:8.0.2.2` are both using `php:8.0.2-fpm-alpine`, but Composer version, installed extensions and other things can be different.
