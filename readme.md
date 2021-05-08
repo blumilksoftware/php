@@ -1,3 +1,5 @@
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/blumilksoftware/php?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/blumilksoftware/php?style=for-the-badge)
+
 # blumilksoftware/php
 PHP Docker image for internal **[@blumilksoftware](https://github.com/blumilksoftware)** development.
 
