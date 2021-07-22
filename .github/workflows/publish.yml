@@ -29,6 +29,35 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           echo IMAGE_ID=$IMAGE_ID
+
+          oldIFS=$IFS
+          IFS="."
+          read -a VERSION_ARRAY <<< $VERSION
+          IFS=$oldIFS
+
+          VERSION_PATH="${VERSION_ARRAY[0]}.${VERSION_ARRAY[1]}.${VERSION_ARRAY[2]}"
+          VERSION_MINOR="${VERSION_ARRAY[0]}.${VERSION_ARRAY[1]}"
+          VERSION_MAJOR="${VERSION_ARRAY[0]}"
+
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+          docker push $IMAGE_ID:latest
+
           echo VERSION=$VERSION
+
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+
+          echo VERSION_PATH=$VERSION_PATH
+
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_PATH
+          docker push $IMAGE_ID:$VERSION_PATH
+
+          echo VERSION_MINOR=$VERSION_MINOR
+
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_MINOR
+          docker push $IMAGE_ID:$VERSION_MINOR
+
+          echo VERSION_MAJOR=$VERSION_MAJOR
+
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_MAJOR
+          docker push $IMAGE_ID:$VERSION_MAJOR
