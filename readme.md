@@ -45,7 +45,7 @@ where `./environment/php/Dockerfile` will be:
 ARG VERSION=8.1
 FROM ghcr.io/blumilksoftware/php:${VERSION}
 
-ARG XDEBUG_VERSION=3.0.4
+ARG XDEBUG_VERSION=3.1.2
 ARG XDEBUG_HOST=172.17.0.1
 ARG XDEBUG_PORT=9003
 ARG XDEBUG_INSTALL=false
