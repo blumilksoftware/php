@@ -64,9 +64,8 @@ RUN if [ ${XDEBUG_INSTALL} = true ]; then \
     && echo "xdebug.log_level=${XDEBUG_LOG_LEVEL}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 ;fi
 ```
----
-#### change Composer version
-if you want to use another Composer version you can override it in Dockerfile:
+#### Change Composer version
+If you would like to use a different version of the Composer, you can override it in the Dockerfile:
 ```dockerfile
 ARG PHP_VERSION=8.1
 ARG COMPOSER_TAG_VERSION=2.2
