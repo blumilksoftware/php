@@ -40,12 +40,12 @@ If you want, you can extend the provided configuration as follows:
       - .:/application
     restart: unless-stopped
 ```
-
 where `./environment/php/Dockerfile` will be:
 ```dockerfile
-FROM ghcr.io/blumilksoftware/php:$VERSION
+ARG VERSION=8.1
+FROM ghcr.io/blumilksoftware/php:${VERSION}
 
-ARG XDEBUG_VERSION=3.0.4
+ARG XDEBUG_VERSION=3.1.2
 ARG XDEBUG_HOST=172.17.0.1
 ARG XDEBUG_PORT=9003
 ARG XDEBUG_INSTALL=false
@@ -64,6 +64,18 @@ RUN if [ ${XDEBUG_INSTALL} = true ]; then \
     && echo "xdebug.log_level=${XDEBUG_LOG_LEVEL}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 ;fi
 ```
+#### Change Composer version
+If you would like to use a different version of the Composer, you can override it in the Dockerfile:
+```dockerfile
+ARG PHP_VERSION=8.1
+ARG COMPOSER_TAG_VERSION=2.2
 
+FROM composer:${COMPOSER_TAG_VERSION} as composer
+FROM ghcr.io/blumilksoftware/php:${PHP_VERSION}
+
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
+
+# the rest of Dockerfile
+```
 ## Notes
 Please remember to add `.composer` directory of your project to `.gitignore` list. This directory is used to Composer cache actions and it should not be pushed to any repository.
