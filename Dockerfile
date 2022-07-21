@@ -1,6 +1,4 @@
-ARG PHP_VERSION=8.1.8
-
-FROM php:${PHP_VERSION}-fpm-alpine
+FROM php:8.1.8-fpm-alpine
 
 ARG COMPOSER_VERSION=2.3.10
 
