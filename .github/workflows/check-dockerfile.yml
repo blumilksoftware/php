@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Test Dockerfile build
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Test Dockerfile build
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
