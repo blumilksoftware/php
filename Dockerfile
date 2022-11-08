@@ -1,13 +1,18 @@
 ARG PHP_VERSION=8.1.12-fpm-alpine
+ARG COMPOSER_TAG_VERSION=2-bin
+
+FROM composer/composer:${COMPOSER_TAG_VERSION} AS composer_binary
 
 FROM php:${PHP_VERSION}
 
-ARG COMPOSER_VERSION=2.4.4
+COPY --from=composer_binary /composer /usr/bin/composer
 
 ENV COMPOSER_HOME=/application/.composer
 ENV COMPOSER_MEMORY_LIMIT=-1
 
 RUN apk update && apk upgrade \
     && apk add --no-cache icu-dev \
-    && curl -sS https://getcomposer.org/installer | php -- --version="${COMPOSER_VERSION}" --install-dir=/usr/local/bin --filename=composer \
-    && docker-php-ext-install mysqli pdo pdo_mysql
+    && docker-php-ext-install \
+        mysqli \
+        pdo \
+        pdo_mysql
