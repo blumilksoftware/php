@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.5-fpm-alpine
+ARG PHP_VERSION=8.5.12-fpm-alpine@sha256:4c9541a4506014672d074652a1cc9754d3c5f97cad6c6027bae35be0e4a4dea9
 ARG COMPOSER_TAG_VERSION=2.9.3-bin
 
 FROM composer/composer:${COMPOSER_TAG_VERSION} AS composer_binary
